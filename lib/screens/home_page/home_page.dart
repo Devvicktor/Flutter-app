@@ -1,5 +1,8 @@
 
 import 'package:flutter/material.dart';
+import 'package:my_app/screens/home_page/comonents/body.dart';
+
+import '../sign_in/login.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({Key? key, required this.title}) : super(key: key);
@@ -26,31 +29,20 @@ class _MyHomePageState extends State<MyHomePage> {
 
     return Scaffold(
       appBar: AppBar(
-
         title: Text(widget.title),
-      ),
-      body: Center(
-
-        child: Column(
-
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
-            ),
-              TextButton(
-            child: const Text('Sign In Page'),
-            onPressed: () async {
-               Navigator.pushNamed(context, '/sign_in');
+        //add sign in button here
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.account_circle),
+            onPressed: () {
+              Navigator.pushNamed(context, SignInScreen.routeName);
             },
           ),
-          ],
-        ),
+        ],
+
+
       ),
+      body:const Body(),
       floatingActionButton: FloatingActionButton(
         onPressed: _incrementCounter,
         tooltip: 'Increment',
