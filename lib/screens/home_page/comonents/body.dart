@@ -5,11 +5,6 @@ class Body extends StatelessWidget {
   const Body({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    return SafeArea(child: SingleChildScrollView(child: Column(
-     children: const <Widget>[
-      SizedBox(height: 20),
-      ProductList()
-     ],
-    )));
+    return const ProductList();
   }
 }
