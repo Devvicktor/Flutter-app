@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:my_app/screens/home_page/comonents/body.dart';
+import 'package:my_app/constants/global_variables.dart';
+import 'package:my_app/screens/categories/all_categories.dart';
+import 'package:my_app/screens/home_page/components/body.dart';
 
 import '../cart/cart_screen.dart';
 import '../sign_in/login.dart';
@@ -48,7 +50,7 @@ class _MyHomePageState extends State<MyHomePage> {
           children: [
             const DrawerHeader(
               decoration: BoxDecoration(
-                color: Colors.blue,
+                color: GlobalVaraibles.secondaryColor,
               ),
               child: Text('Drawer Header'),
             ),
@@ -60,24 +62,46 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             ListTile(
               title: const Text('Item 2'),
-              onTap: () {
+              onTap: () async {
                 Navigator.pop(context);
               },
             ),
           ],
         ),
       ),
-      bottomNavigationBar: BottomNavigationBar(items: const [
-        BottomNavigationBarItem(
-          icon: Icon(Icons.home),
-          label: 'Home',
-        ),
-        BottomNavigationBarItem(
-          icon: Icon(Icons.category),
-          label: 'Categories',
-        ),
-        BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Account'),
-      ]),
+      bottomNavigationBar: BottomNavigationBar(
+        items: const [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: 'Home',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.category),
+            label: 'Categories',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.person),
+            label: 'Account',
+          ),
+        ],
+        onTap: (int index) {
+          switch (index) {
+            case 0:
+              Navigator.pushNamed(context, MyHomePage.routeName);
+              break;
+            case 1:
+              Navigator.pushNamed(context, AllCategoriesScreen.routeName);
+              break;
+            case 2:
+              Navigator.pushNamed(context, SignInScreen.routeName);
+              break;
+            default:
+              Navigator.pushNamed(context, MyHomePage.routeName);
+              break;
+          }
+        },
+        selectedItemColor: GlobalVaraibles.secondaryColor,
+      ),
     );
   }
 }
